@@ -67,7 +67,7 @@
             width: 100%;
         }
 
-        /* Header & Navigation */
+        /* Header & Navigation - Matching index.html */
         header {
             background-color: rgba(255, 255, 255, 0.98);
             box-shadow: var(--shadow);
@@ -83,11 +83,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
         }
 
         .logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 600;
             color: var(--secondary);
             text-decoration: none;
@@ -102,19 +105,19 @@
 
         .logo-icon {
             color: var(--accent);
-            font-size: 1.3rem;
+            font-size: 1.4rem;
         }
 
         .nav-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.8rem;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--secondary);
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: var(--transition);
             position: relative;
         }
@@ -139,7 +142,7 @@
 
         .cart-icon {
             position: relative;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--secondary);
             cursor: pointer;
             transition: var(--transition);
@@ -169,9 +172,10 @@
             display: none;
             background: none;
             border: none;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--secondary);
             cursor: pointer;
+            transition: var(--transition);
         }
 
         /* Product Hero Section */
@@ -819,32 +823,33 @@
             margin: 0 auto 15px;
         }
 
-        /* Footer */
+        /* Footer - Matching index.html */
         footer {
-            background: var(--secondary);
+            background-color: var(--secondary);
             color: white;
-            padding: 50px 0 25px;
+            padding: 3rem 1.5rem 1.5rem;
             width: 100%;
         }
 
         .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
         }
 
         .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
             color: var(--primary);
-            font-size: 1.1rem;
-            margin-bottom: 15px;
         }
 
         .footer-column p, .footer-column a {
             color: #ccc;
-            text-decoration: none;
+            margin-bottom: 0.6rem;
             display: block;
-            margin-bottom: 10px;
+            text-decoration: none;
             transition: var(--transition);
             font-size: 0.85rem;
         }
@@ -862,7 +867,8 @@
 
         .copyright {
             text-align: center;
-            padding-top: 25px;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #999;
             font-size: 0.8rem;
@@ -895,7 +901,7 @@
             visibility: visible;
         }
 
-        /* Responsive Design */
+        /* Responsive Design - Matching index.html */
         @media (max-width: 992px) {
             .product-hero-container {
                 gap: 30px;
@@ -922,6 +928,10 @@
             .timeline-item:nth-child(even) {
                 left: 0;
             }
+            
+            .nav-links {
+                gap: 1.5rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -931,13 +941,13 @@
             
             .nav-links {
                 position: fixed;
-                top: 65px;
+                top: 70px;
                 left: 0;
                 width: 100%;
-                background: white;
+                background-color: white;
                 flex-direction: column;
                 align-items: center;
-                padding: 1.2rem;
+                padding: 1.5rem;
                 box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
                 transform: translateY(-100%);
                 opacity: 0;
@@ -985,6 +995,14 @@
             
             .container {
                 padding: 0 1.2rem;
+            }
+            
+            .logo {
+                font-size: 1.6rem;
+            }
+            
+            .logo-icon {
+                font-size: 1.3rem;
             }
         }
 
@@ -1042,6 +1060,10 @@
             .slideshow-arrow.next {
                 right: 8px;
             }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
         }
 
         /* Prevent horizontal scroll */
@@ -1053,10 +1075,10 @@
 <body itemscope itemtype="https://schema.org/Product">
     <!-- Header -->
     <header>
-        <div class="container nav-container">
-            <a href="main.html" class="logo" itemprop="url">
+        <div class="nav-container">
+            <a href="index.html" class="logo" itemprop="url">
                 <i class="fas fa-spa logo-icon"></i>
-                AURA<span>CLEANSE</span>
+                <span itemprop="name">AURA<span>CLEANSE</span></span>
             </a>
             
             <button class="menu-toggle" id="menuToggle">
@@ -1064,8 +1086,8 @@
             </button>
             
             <div class="nav-links" id="navLinks">
-                <a href="main.html">Home</a>
-                <a href="main.html#products">Products</a>
+                <a href="index.html">Home</a>
+                <a href="index.html#products">Products</a>
                 <a href="#" class="active">Rose Petal</a>
                 <a href="#contact">Contact</a>
             </div>
@@ -1541,49 +1563,55 @@
 
     <!-- Footer -->
     <footer id="contact" itemscope itemtype="https://schema.org/LocalBusiness">
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-column">
-                    <h3>AURA CLEANSE</h3>
-                    <p itemprop="description">From the House of BHAP Organics, we bring you divine handmade soaps crafted with pure, natural ingredients and ancient Ayurvedic wisdom for radiant, healthy skin.</p>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>AURA-CLEANSE</h3>
+                <p itemprop="description">From the House of BHAP Organics, we bring you divine handmade soaps crafted with pure, natural ingredients and ancient Ayurvedic wisdom for radiant, healthy skin.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+918532853241" itemprop="telephone">+91 85328 53241</a>
                 </div>
-                
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <div class="contact-info">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+918532853241" itemprop="telephone">+91 85328 53241</a>
-                    </div>
-                    <div class="contact-info">
-                        <i class="fab fa-whatsapp"></i>
-                        <a href="https://wa.me/918532853241" target="_blank">WhatsApp</a>
-                    </div>
-                    <div class="contact-info">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:info@aura-cleanse.com" itemprop="email">info@aura-cleanse.com</a>
-                    </div>
+                <div class="contact-info">
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/918532853241" target="_blank">WhatsApp: +91 85328 53241</a>
                 </div>
-                
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <a href="main.html">Home</a>
-                    <a href="main.html#products">All Products</a>
-                    <a href="#">Rose Petal Soap</a>
-                    <a href="#contact">Contact</a>
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:info@aura-cleanse.com" itemprop="email">info@aura-cleanse.com</a>
                 </div>
-                
-                <div class="footer-column">
-                    <h3>Our Promise</h3>
-                    <p>100% Natural Ingredients</p>
-                    <p>Handmade with Care</p>
-                    <p>Cruelty-Free & Sustainable</p>
-                    <p>Ayurvedic Formulations</p>
+                <div class="contact-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                        <span itemprop="addressLocality">Pune</span>, 
+                        <span itemprop="addressRegion">Maharashtra</span>
+                    </span>
                 </div>
             </div>
             
-            <div class="copyright">
-                <p>&copy; 2023 AURA-CLEANSE. From the House of BHAP Organics. All rights reserved.</p>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="index.html#products">Products</a>
+                <a href="#">Rose Petal</a>
+                <a href="#contact">Contact</a>
             </div>
+            
+            <div class="footer-column">
+                <h3>Our Promise</h3>
+                <p>100% Natural Ingredients</p>
+                <p>Handmade with Care</p>
+                <p>Cruelty-Free & Sustainable</p>
+                <p>Ayurvedic Formulations</p>
+                <p>No Artificial Preservatives</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 AURA-CLEANSE. From the House of BHAP Organics. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1620,19 +1648,21 @@
             }
         });
         
-        // Cart functionality for product pages - Shared session storage
+        // Shared Cart System - FIXED for GitHub Pages
         let cart = [];
         let cartCountElement = null;
         
-        // Initialize cart from sessionStorage - Load existing cart
+        // Initialize cart from shared session storage
         function initCart() {
             cartCountElement = document.querySelector('.cart-count');
             
-            // Load cart from sessionStorage
+            // Always load cart from sessionStorage
             const savedCart = sessionStorage.getItem('auraCleanseCart');
             
             if (savedCart) {
                 cart = JSON.parse(savedCart);
+            } else {
+                cart = [];
             }
             
             updateCartDisplay();
@@ -1642,21 +1672,27 @@
         function updateCartDisplay() {
             if (!cartCountElement) return;
             
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            const totalItems = cart.reduce((total, item) => total + (item.quantity || 1), 0);
             cartCountElement.textContent = totalItems;
         }
         
-        // Save cart to sessionStorage
+        // Save cart to shared session storage
         function saveCartToStorage() {
             sessionStorage.setItem('auraCleanseCart', JSON.stringify(cart));
             sessionStorage.setItem('auraCleanseCartTimestamp', Date.now());
+            
+            // Notify main page that cart was updated
+            try {
+                localStorage.setItem('cartUpdated', Date.now().toString());
+            } catch (e) {
+                console.log("Local storage notification failed");
+            }
         }
         
         // Premium Slideshow Variables
         let currentSlide = 0;
         let totalSlides = 3;
         let slideshowInterval;
-        let isSlideshowPaused = false;
         
         // Initialize Premium Slideshow
         function initSlideshow() {
@@ -1698,15 +1734,11 @@
             // Pause slideshow on hover
             const slideshowContainer = document.getElementById('slideshowContainer');
             slideshowContainer.addEventListener('mouseenter', () => {
-                if (!isSlideshowPaused) {
-                    pauseSlideshow();
-                }
+                clearInterval(slideshowInterval);
             });
             
             slideshowContainer.addEventListener('mouseleave', () => {
-                if (!isSlideshowPaused) {
-                    startSlideshow();
-                }
+                startSlideshow();
             });
         }
         
@@ -1715,11 +1747,6 @@
             slideshowInterval = setInterval(() => {
                 navigateSlideshow(1);
             }, 4000); // Change slide every 4 seconds
-        }
-        
-        // Pause slideshow
-        function pauseSlideshow() {
-            clearInterval(slideshowInterval);
         }
         
         // Navigate slideshow
@@ -1732,17 +1759,6 @@
         function goToSlide(index) {
             currentSlide = index;
             updateSlideshow();
-            
-            // Pause slideshow temporarily when user manually selects a slide
-            pauseSlideshow();
-            isSlideshowPaused = true;
-            
-            // Restart after 10 seconds if not weight-selected
-            setTimeout(() => {
-                if (!isSlideshowPaused) {
-                    startSlideshow();
-                }
-            }, 10000);
         }
         
         // Update slideshow display
@@ -1803,10 +1819,6 @@
                 
                 // Update slideshow based on weight selection
                 updateSlideshowByWeight();
-                
-                // Pause slideshow when weight is selected
-                pauseSlideshow();
-                isSlideshowPaused = true;
             });
         });
         
@@ -1859,10 +1871,14 @@
             document.getElementById('priceSavings').textContent = `Save ₹${savings}`;
         }
         
-        // Add to Cart Functionality - Shared with main page
+        // Add to Cart Functionality - Shared with index.html
         function addToCartFromProductPage() {
+            // Generate unique ID based on product + weight combination
+            const uniqueId = `rose-petal-${currentWeight}g`;
+            
             const product = {
-                id: 1,
+                id: uniqueId,
+                originalId: 1, // Original product ID for reference
                 name: "Rose Petal Soap",
                 subtitle: "Simply Rosy",
                 price: currentPrice,
@@ -1871,10 +1887,11 @@
                 quantity: quantity,
                 icon: "fas fa-rose",
                 size: currentWeight + "g",
-                image: "https://images.unsplash.com/photo-1608248242905-5f2274e7d4d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                image: "https://images.unsplash.com/photo-1608248242905-5f2274e7d4d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                alt: `Rose Petal Soap ${currentWeight}g - Natural Ayurvedic handmade soap`
             };
             
-            const existingItem = cart.find(item => item.id === product.id && item.weight === product.weight);
+            const existingItem = cart.find(item => item.id === uniqueId);
             
             if (existingItem) {
                 existingItem.quantity += product.quantity;
@@ -1887,6 +1904,9 @@
             
             // Show notification
             showNotification(`${quantity} × Rose Petal Soap (${currentWeight}g) added to cart!`);
+            
+            // Set flag to open cart when returning to index.html
+            sessionStorage.setItem('openCartOnLoad', 'true');
         }
         
         // Update the existing add to cart event listener
@@ -1913,9 +1933,15 @@ Please confirm my order and provide delivery details.`;
             window.open(whatsappUrl, '_blank');
         });
         
-        // Cart icon click - redirect to main page cart
-        document.getElementById('cartIcon').addEventListener('click', () => {
-            window.location.href = 'main.html';
+        // Cart icon click - redirect to index.html page with cart open
+        document.getElementById('cartIcon').addEventListener('click', (e) => {
+            e.preventDefault();
+            // Save current cart state
+            saveCartToStorage();
+            // Set a flag to open cart on index page
+            sessionStorage.setItem('openCartOnLoad', 'true');
+            // Redirect to index page
+            window.location.href = 'index.html';
         });
         
         // Initialize Swiper for Reviews
@@ -2020,6 +2046,14 @@ Please confirm my order and provide delivery details.`;
             initCart(); // Initialize cart system - Load from shared session storage
             initSlideshow(); // Initialize premium slideshow
             updatePriceDisplay();
+            
+            // Listen for cart updates from index.html
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'cartUpdated') {
+                    // Reload cart from storage when updated from index page
+                    initCart();
+                }
+            });
             
             // Add structured data for SEO
             const structuredData = {
