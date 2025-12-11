@@ -823,6 +823,213 @@
             margin: 0 auto 15px;
         }
 
+        /* Cart Modal - ADDED TO product1.html */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 380px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -3px 0 20px rgba(0, 0, 0, 0.05);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-modal.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-header h2 {
+            font-size: 1.6rem;
+            color: var(--secondary);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: #666;
+            transition: var(--transition);
+        }
+
+        .close-cart:hover {
+            color: var(--accent);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-image {
+            width: 65px;
+            height: 65px;
+            background-color: var(--primary);
+            border-radius: 6px;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.4rem;
+            overflow: hidden;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+            color: var(--secondary);
+            font-size: 0.95rem;
+        }
+
+        .cart-item-price {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .cart-quantity-btn {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background-color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .cart-quantity-btn:hover {
+            background-color: #f5f5f5;
+        }
+
+        .cart-item-quantity {
+            font-weight: 600;
+            width: 26px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+            margin-left: 0.4rem;
+        }
+
+        .remove-item:hover {
+            color: #ff4757;
+        }
+
+        .cart-footer {
+            border-top: 1px solid #eee;
+            padding-top: 1.2rem;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .cart-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .checkout-btn, .whatsapp-order-btn {
+            padding: 0.8rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .checkout-btn {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .checkout-btn:hover {
+            background-color: #3a5152;
+        }
+
+        .whatsapp-order-btn {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .whatsapp-order-btn:hover {
+            background-color: #1da851;
+        }
+
+        /* Empty Cart Message */
+        .empty-cart-message {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #999;
+        }
+
+        .empty-cart-message p:first-child {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
         /* Footer - Matching index.html */
         footer {
             background-color: var(--secondary);
@@ -901,6 +1108,33 @@
             visibility: visible;
         }
 
+        /* Mobile-Only Floating Action Button - ADDED */
+        .mobile-fab {
+            display: none;
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: none;
+            box-shadow: 0 6px 20px rgba(183, 110, 121, 0.25);
+            cursor: pointer;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .mobile-fab:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 25px rgba(183, 110, 121, 0.35);
+        }
+
+        .mobile-fab i {
+            font-size: 1.3rem;
+        }
+
         /* Responsive Design - Matching index.html */
         @media (max-width: 992px) {
             .product-hero-container {
@@ -931,6 +1165,10 @@
             
             .nav-links {
                 gap: 1.5rem;
+            }
+            
+            .cart-modal {
+                width: 350px;
             }
         }
 
@@ -1004,6 +1242,32 @@
             .logo-icon {
                 font-size: 1.3rem;
             }
+            
+            .cart-modal {
+                width: 100%;
+                padding: 1.2rem;
+            }
+            
+            .cart-header h2 {
+                font-size: 1.4rem;
+            }
+            
+            .cart-item {
+                padding: 0.8rem 0;
+            }
+            
+            .cart-item-image {
+                width: 60px;
+                height: 60px;
+                margin-right: 0.8rem;
+                font-size: 1.2rem;
+            }
+            
+            .mobile-fab {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1064,6 +1328,11 @@
             .logo {
                 font-size: 1.5rem;
             }
+            
+            .cart-item-image {
+                width: 55px;
+                height: 55px;
+            }
         }
 
         /* Prevent horizontal scroll */
@@ -1098,6 +1367,11 @@
             </div>
         </div>
     </header>
+
+    <!-- Mobile Floating Action Button -->
+    <button class="mobile-fab" id="mobileFab">
+        <i class="fas fa-shopping-bag"></i>
+    </button>
 
     <!-- Product Hero Section -->
     <section class="product-hero">
@@ -1561,6 +1835,40 @@
         </div>
     </section>
 
+    <!-- Cart Modal - ADDED TO product1.html -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically inserted here -->
+            <div class="empty-cart-message" id="emptyCartMessage">
+                <p>Your cart is empty</p>
+                <p>Add some divine soaps to get started!</p>
+            </div>
+        </div>
+        
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">₹0</span>
+            </div>
+            
+            <div class="cart-actions">
+                <button class="checkout-btn" id="checkoutBtn">
+                    <i class="fas fa-credit-card"></i> Proceed to Checkout
+                </button>
+                <button class="whatsapp-order-btn" id="whatsappCartBtn">
+                    <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer id="contact" itemscope itemtype="https://schema.org/LocalBusiness">
         <div class="footer-container">
@@ -1650,30 +1958,30 @@
         
         // Shared Cart System - FIXED for GitHub Pages
         let cart = [];
-        let cartCountElement = null;
+        const cartModal = document.getElementById('cartModal');
+        const cartIcon = document.getElementById('cartIcon');
+        const closeCart = document.getElementById('closeCart');
+        const cartItemsContainer = document.getElementById('cartItems');
+        const cartTotalElement = document.getElementById('cartTotal');
+        const cartCountElement = document.querySelector('.cart-count');
+        const emptyCartMessage = document.getElementById('emptyCartMessage');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const whatsappCartBtn = document.getElementById('whatsappCartBtn');
+        const mobileFab = document.getElementById('mobileFab');
         
         // Initialize cart from shared session storage
-        function initCart() {
-            cartCountElement = document.querySelector('.cart-count');
-            
-            // Always load cart from sessionStorage
+        function loadCartFromStorage() {
             const savedCart = sessionStorage.getItem('auraCleanseCart');
             
             if (savedCart) {
+                // Always load cart from sessionStorage
                 cart = JSON.parse(savedCart);
             } else {
+                // If no cart exists, initialize empty array
                 cart = [];
             }
             
-            updateCartDisplay();
-        }
-        
-        // Update cart display
-        function updateCartDisplay() {
-            if (!cartCountElement) return;
-            
-            const totalItems = cart.reduce((total, item) => total + (item.quantity || 1), 0);
-            cartCountElement.textContent = totalItems;
+            updateCart();
         }
         
         // Save cart to shared session storage
@@ -1681,12 +1989,193 @@
             sessionStorage.setItem('auraCleanseCart', JSON.stringify(cart));
             sessionStorage.setItem('auraCleanseCartTimestamp', Date.now());
             
-            // Notify main page that cart was updated
+            // Notify other pages that cart was updated
             try {
                 localStorage.setItem('cartUpdated', Date.now().toString());
             } catch (e) {
                 console.log("Local storage notification failed");
             }
+        }
+        
+        // Update cart UI
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCountElement.textContent = totalItems;
+            
+            // Update cart items
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                emptyCartMessage.style.display = 'block';
+                cartItemsContainer.appendChild(emptyCartMessage);
+            } else {
+                emptyCartMessage.style.display = 'none';
+                
+                let totalPrice = 0;
+                let totalMrp = 0;
+                
+                cart.forEach(item => {
+                    totalPrice += item.price * item.quantity;
+                    totalMrp += item.mrp * item.quantity;
+                    
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <div class="cart-item-image">
+                            <img src="${item.image}" alt="${item.alt || item.name}" loading="lazy">
+                        </div>
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.name} ${item.weight ? '(' + item.weight + ')' : ''}</div>
+                            <div class="cart-item-price">
+                                ₹${item.price} × ${item.quantity} = ₹${item.price * item.quantity}
+                                <div style="font-size: 0.8rem; color: #999; text-decoration: line-through;">MRP: ₹${item.mrp * item.quantity}</div>
+                            </div>
+                        </div>
+                        <div class="cart-item-actions">
+                            <button class="cart-quantity-btn decrease-cart" data-id="${item.id}">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="cart-item-quantity">${item.quantity}</span>
+                            <button class="cart-quantity-btn increase-cart" data-id="${item.id}">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <button class="remove-item" data-id="${item.id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                    
+                    cartItemsContainer.appendChild(cartItem);
+                });
+                
+                // Add event listeners to cart item buttons
+                document.querySelectorAll('.decrease-cart').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const productId = this.getAttribute('data-id');
+                        updateCartQuantity(productId, -1);
+                    });
+                });
+                
+                document.querySelectorAll('.increase-cart').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const productId = this.getAttribute('data-id');
+                        updateCartQuantity(productId, 1);
+                    });
+                });
+                
+                document.querySelectorAll('.remove-item').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const productId = this.getAttribute('data-id');
+                        removeFromCart(productId);
+                    });
+                });
+                
+                // Update total with savings
+                const totalSavings = totalMrp - totalPrice;
+                cartTotalElement.innerHTML = `
+                    <div>Total: ₹${totalPrice}</div>
+                    <div style="font-size: 0.9rem; color: #27ae60; font-weight: normal;">
+                        You save: ₹${totalSavings}
+                    </div>
+                `;
+            }
+        }
+        
+        // Update item quantity in cart
+        function updateCartQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            
+            if (item) {
+                item.quantity += change;
+                
+                if (item.quantity <= 0) {
+                    cart = cart.filter(item => item.id !== productId);
+                }
+                
+                updateCart();
+                saveCartToStorage();
+            }
+        }
+        
+        // Remove item from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+            saveCartToStorage();
+            showNotification('Item removed from cart');
+        }
+        
+        // Checkout function
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty. Add some items first!');
+                return;
+            }
+            
+            let message = "Hello, I would like to place an order from Aura-Cleanse:\n\n";
+            let total = 0;
+            let totalMrp = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.quantity * item.price;
+                const itemMrp = item.quantity * item.mrp;
+                const sizeInfo = item.weight ? `(${item.weight})` : `(${item.size || '100g'})`;
+                message += `${item.name} ${sizeInfo}: ${item.quantity} × ₹${item.price} = ₹${itemTotal}\n`;
+                total += itemTotal;
+                totalMrp += itemMrp;
+            });
+            
+            const savings = totalMrp - total;
+            const discountPercent = Math.round((savings / totalMrp) * 100);
+            
+            message += `\nTotal: ₹${total}`;
+            message += `\nTotal Savings: ₹${savings} (${discountPercent}% OFF)`;
+            message += `\n\nPlease confirm my order and provide delivery details.`;
+            
+            const whatsappUrl = `https://wa.me/918532853241?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // Show notification
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 25px;
+                right: 25px;
+                background-color: var(--secondary);
+                color: white;
+                padding: 0.8rem 1.2rem;
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                z-index: 3000;
+                transform: translateY(100px);
+                opacity: 0;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                font-weight: 500;
+                max-width: 280px;
+                text-align: center;
+                font-size: 0.9rem;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateY(0)';
+                notification.style.opacity = '1';
+            }, 10);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateY(100px)';
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
         }
         
         // Premium Slideshow Variables
@@ -1878,7 +2367,6 @@
             
             const product = {
                 id: uniqueId,
-                originalId: 1, // Original product ID for reference
                 name: "Rose Petal Soap",
                 subtitle: "Simply Rosy",
                 price: currentPrice,
@@ -1900,13 +2388,10 @@
             }
             
             saveCartToStorage();
-            updateCartDisplay();
+            updateCart();
             
             // Show notification
             showNotification(`${quantity} × Rose Petal Soap (${currentWeight}g) added to cart!`);
-            
-            // Set flag to open cart when returning to index.html
-            sessionStorage.setItem('openCartOnLoad', 'true');
         }
         
         // Update the existing add to cart event listener
@@ -1933,15 +2418,35 @@ Please confirm my order and provide delivery details.`;
             window.open(whatsappUrl, '_blank');
         });
         
-        // Cart icon click - redirect to index.html page with cart open
-        document.getElementById('cartIcon').addEventListener('click', (e) => {
-            e.preventDefault();
-            // Save current cart state
-            saveCartToStorage();
-            // Set a flag to open cart on index page
-            sessionStorage.setItem('openCartOnLoad', 'true');
-            // Redirect to index page
-            window.location.href = 'index.html';
+        // Cart icon click - OPEN CART ON SAME PAGE
+        cartIcon.addEventListener('click', () => {
+            cartModal.classList.add('open');
+            // Close mobile menu if open
+            if (window.innerWidth <= 768) {
+                navLinks.classList.remove('active');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+            }
+        });
+        
+        // Mobile FAB functionality
+        mobileFab.addEventListener('click', () => {
+            cartModal.classList.add('open');
+        });
+        
+        closeCart.addEventListener('click', () => {
+            cartModal.classList.remove('open');
+        });
+        
+        checkoutBtn.addEventListener('click', checkout);
+        
+        whatsappCartBtn.addEventListener('click', checkout);
+        
+        // Close cart when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!cartModal.contains(e.target) && !cartIcon.contains(e.target) && !mobileFab.contains(e.target) && cartModal.classList.contains('open')) {
+                cartModal.classList.remove('open');
+            }
         });
         
         // Initialize Swiper for Reviews
@@ -2004,46 +2509,9 @@ Please confirm my order and provide delivery details.`;
             });
         });
         
-        // Notification System
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                bottom: 25px;
-                left: 50%;
-                transform: translateX(-50%) translateY(100px);
-                background: var(--secondary);
-                color: white;
-                padding: 10px 20px;
-                border-radius: var(--radius);
-                box-shadow: var(--shadow);
-                z-index: 10000;
-                transition: transform 0.3s ease;
-                font-weight: 500;
-                min-width: 250px;
-                text-align: center;
-                font-size: 0.85rem;
-            `;
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            // Animate in
-            setTimeout(() => {
-                notification.style.transform = 'translateX(-50%) translateY(0)';
-            }, 10);
-            
-            // Remove after 3 seconds
-            setTimeout(() => {
-                notification.style.transform = 'translateX(-50%) translateY(100px)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-        
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
-            initCart(); // Initialize cart system - Load from shared session storage
+            loadCartFromStorage(); // Initialize cart system - Load from shared session storage
             initSlideshow(); // Initialize premium slideshow
             updatePriceDisplay();
             
@@ -2051,7 +2519,7 @@ Please confirm my order and provide delivery details.`;
             window.addEventListener('storage', function(e) {
                 if (e.key === 'cartUpdated') {
                     // Reload cart from storage when updated from index page
-                    initCart();
+                    loadCartFromStorage();
                 }
             });
             
