@@ -2229,15 +2229,6 @@
             renderProducts();
             updateCart();
             
-            // Check if cart should be opened automatically (from product page)
-            const shouldOpenCart = sessionStorage.getItem('openCartOnLoad');
-            if (shouldOpenCart === 'true') {
-                setTimeout(() => {
-                    cartModal.classList.add('open');
-                }, 500);
-                sessionStorage.removeItem('openCartOnLoad');
-            }
-            
             // Listen for cart updates from other tabs (product pages)
             window.addEventListener('storage', function(e) {
                 if (e.key === 'cartUpdated') {
