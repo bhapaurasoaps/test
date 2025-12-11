@@ -1696,7 +1696,7 @@
             }
         ];
 
-        // Cart functionality - Session-based cart (clears only on main page reload)
+        // Cart functionality - Session-based cart
         let cart = [];
         const cartModal = document.getElementById('cartModal');
         const cartIcon = document.getElementById('cartIcon');
@@ -1888,26 +1888,28 @@
             });
         }
 
-        // Session Storage Cart Functions
+        // Session Storage Cart Functions - FIXED
         function saveCartToStorage() {
             sessionStorage.setItem('auraCleanseCart', JSON.stringify(cart));
             sessionStorage.setItem('auraCleanseCartTimestamp', Date.now());
+            
+            // Notify other pages that cart was updated
+            try {
+                localStorage.setItem('cartUpdated', Date.now().toString());
+            } catch (e) {
+                console.log("Local storage notification failed");
+            }
         }
 
         function loadCartFromStorage() {
             const savedCart = sessionStorage.getItem('auraCleanseCart');
-            const timestamp = sessionStorage.getItem('auraCleanseCartTimestamp');
             
-            // Check if this is a fresh page load (not navigation)
-            const isFreshLoad = sessionStorage.getItem('freshLoad') === null;
-            
-            if (isFreshLoad) {
-                // Fresh page load - clear cart
-                cart = [];
-                sessionStorage.setItem('freshLoad', 'true');
-            } else if (savedCart) {
-                // Navigation - load existing cart
+            if (savedCart) {
+                // Always load cart from sessionStorage
                 cart = JSON.parse(savedCart);
+            } else {
+                // If no cart exists, initialize empty array
+                cart = [];
             }
             
             updateCart();
@@ -1916,7 +1918,6 @@
         function clearCartStorage() {
             sessionStorage.removeItem('auraCleanseCart');
             sessionStorage.removeItem('auraCleanseCartTimestamp');
-            sessionStorage.removeItem('freshLoad');
         }
 
         // Add product to cart with quantity
@@ -2228,6 +2229,23 @@
             renderProducts();
             updateCart();
             
+            // Check if cart should be opened automatically (from product page)
+            const shouldOpenCart = sessionStorage.getItem('openCartOnLoad');
+            if (shouldOpenCart === 'true') {
+                setTimeout(() => {
+                    cartModal.classList.add('open');
+                }, 500);
+                sessionStorage.removeItem('openCartOnLoad');
+            }
+            
+            // Listen for cart updates from other tabs (product pages)
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'cartUpdated') {
+                    // Reload cart from storage when updated from another page
+                    loadCartFromStorage();
+                }
+            });
+            
             // Add animation to product cards on scroll
             const observerOptions = {
                 threshold: 0.1,
@@ -2291,4 +2309,3 @@
     </script>
 </body>
 </html>
-
