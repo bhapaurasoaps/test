@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rose Petal Soap | Divine Handmade Soap | Aura-Cleanse</title>
+    <meta name="description" content="Experience pure Ayurvedic Rose Petal handmade soap from Aura-Cleanse. Natural, organic skincare with rose petals for radiant, healthy skin. Available in 75g & 120g sizes.">
+    <meta name="keywords" content="Rose Petal Soap, Ayurvedic Rose Soap, handmade rose soap, natural skincare, organic rose soap, rose petal skincare, natural beauty products, rose for skin">
+    <meta name="author" content="Aura-Cleanse, BHAP Organics">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Rose Petal Soap | Divine Handmade Soap | Aura-Cleanse">
+    <meta property="og:description" content="Natural Ayurvedic Rose Petal handmade soap for radiant skin">
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="https://aura-cleanse.com/rose-petal-soap">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1608248242905-5f2274e7d4d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+    <link rel="canonical" href="https://aura-cleanse.com/rose-petal-soap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -189,14 +199,101 @@
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4.5rem;
-            color: var(--accent);
+            position: relative;
             margin-bottom: 1rem;
         }
 
+        .main-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        /* Premium Slideshow Styles */
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slideshow-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slideshow-slide.active {
+            opacity: 1;
+        }
+
+        .slideshow-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slideshow-nav {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .slideshow-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slideshow-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .slideshow-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10;
+            color: var(--secondary);
+            font-size: 1rem;
+        }
+
+        .slideshow-arrow:hover {
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .slideshow-arrow.prev {
+            left: 15px;
+        }
+
+        .slideshow-arrow.next {
+            right: 15px;
+        }
+
+        /* Thumbnails */
         .product-thumbnails {
             display: flex;
             gap: 10px;
@@ -216,6 +313,14 @@
             cursor: pointer;
             transition: var(--transition);
             border: 1px solid transparent;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .thumbnail.active {
@@ -232,7 +337,7 @@
             border-radius: 20px;
             font-weight: 600;
             font-size: 0.75rem;
-            z-index: 2;
+            z-index: 20;
         }
 
         /* Product Info Section */
@@ -330,11 +435,12 @@
             margin-bottom: 20px;
         }
 
-        .price-row {
+        .price-container {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 10px;
             margin-bottom: 15px;
+            flex-wrap: wrap;
         }
 
         .current-price {
@@ -357,6 +463,15 @@
             border-radius: 20px;
             font-weight: 600;
             font-size: 0.75rem;
+        }
+
+        .price-savings {
+            font-size: 0.85rem;
+            color: #27ae60;
+            font-weight: 600;
+            background-color: rgba(39, 174, 96, 0.1);
+            padding: 3px 8px;
+            border-radius: 4px;
         }
 
         .quantity-selector {
@@ -609,11 +724,23 @@
             margin-bottom: 8px;
         }
 
+        .product-card-price-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 8px 0;
+        }
+
         .product-card-price {
             font-size: 1.2rem;
             color: var(--accent);
             font-weight: 600;
-            margin: 8px 0;
+        }
+
+        .product-card-mrp {
+            font-size: 1rem;
+            color: #999;
+            text-decoration: line-through;
         }
 
         .product-card-rating {
@@ -776,7 +903,6 @@
             
             .main-product-image {
                 height: 280px;
-                font-size: 4rem;
             }
             
             .section-title {
@@ -881,7 +1007,6 @@
             
             .main-product-image {
                 height: 220px;
-                font-size: 3.5rem;
             }
             
             .review-card {
@@ -903,6 +1028,20 @@
                 width: 40px;
                 height: 40px;
             }
+            
+            .slideshow-arrow {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+            
+            .slideshow-arrow.prev {
+                left: 8px;
+            }
+            
+            .slideshow-arrow.next {
+                right: 8px;
+            }
         }
 
         /* Prevent horizontal scroll */
@@ -911,11 +1050,11 @@
         }
     </style>
 </head>
-<body>
+<body itemscope itemtype="https://schema.org/Product">
     <!-- Header -->
     <header>
         <div class="container nav-container">
-            <a href="main.html" class="logo">
+            <a href="main.html" class="logo" itemprop="url">
                 <i class="fas fa-spa logo-icon"></i>
                 AURA<span>CLEANSE</span>
             </a>
@@ -943,27 +1082,70 @@
         <div class="container product-hero-container">
             <div class="product-gallery">
                 <div class="product-badge">Ayurvedic Certified</div>
-                <div class="main-product-image" id="mainImage">
-                    <i class="fas fa-rose"></i>
+                <div class="main-product-image">
+                    <div class="slideshow-container" id="slideshowContainer">
+                        <!-- Image 1: 75g product -->
+                        <div class="slideshow-slide active" data-weight="75" data-index="0">
+                            <img src="soap.jpg" 
+                                 alt="Aura-Cleanse Rose Petal Soap 75g - Natural Ayurvedic handmade soap with rose petals" 
+                                 itemprop="image"
+                                 loading="lazy">
+                        </div>
+                        <!-- Image 2: 120g product -->
+                        <div class="slideshow-slide" data-weight="120" data-index="1">
+                            <img src="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Aura-Cleanse Rose Petal Soap 120g - Large size natural rose soap for family use" 
+                                 itemprop="image"
+                                 loading="lazy">
+                        </div>
+                        <!-- Image 3: General banner -->
+                        <div class="slideshow-slide" data-weight="all" data-index="2">
+                            <img src="soap.jpg" 
+                                 alt="Aura-Cleanse Rose Petal Soap Collection - Premium Ayurvedic handmade soaps" 
+                                 itemprop="image"
+                                 loading="lazy">
+                        </div>
+                        
+                        <!-- Navigation arrows -->
+                        <div class="slideshow-arrow prev" id="slideshowPrev">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="slideshow-arrow next" id="slideshowNext">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        
+                        <!-- Dots navigation -->
+                        <div class="slideshow-nav" id="slideshowDots">
+                            <div class="slideshow-dot active" data-index="0"></div>
+                            <div class="slideshow-dot" data-index="1"></div>
+                            <div class="slideshow-dot" data-index="2"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="product-thumbnails">
-                    <div class="thumbnail active" data-image="rose">
-                        <i class="fas fa-rose"></i>
+                    <div class="thumbnail active" data-image-index="0">
+                        <img src="https://images.unsplash.com/photo-1608248242905-5f2274e7d4d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                             alt="Rose Petal Soap 75g thumbnail" 
+                             loading="lazy">
                     </div>
-                    <div class="thumbnail" data-image="petals">
-                        <i class="fas fa-leaf"></i>
+                    <div class="thumbnail" data-image-index="1">
+                        <img src="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                             alt="Rose Petal Soap 120g thumbnail" 
+                             loading="lazy">
                     </div>
-                    <div class="thumbnail" data-image="package">
-                        <i class="fas fa-gift"></i>
+                    <div class="thumbnail" data-image-index="2">
+                        <img src="https://images.unsplash.com/photo-1563241527-3004b7be8b7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                             alt="Rose Petal Soap collection banner thumbnail" 
+                             loading="lazy">
                     </div>
                 </div>
             </div>
             
             <div class="product-info">
-                <h1>Rose Petal Soap</h1>
-                <div class="product-subtitle">Simply Rosy - Gentle Skin Nourishment</div>
+                <h1 itemprop="name">Rose Petal Soap</h1>
+                <div class="product-subtitle" itemprop="description">Simply Rosy - Gentle Skin Nourishment</div>
                 
-                <div class="product-rating">
+                <div class="product-rating" itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -971,10 +1153,12 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <div class="rating-text">4.7/5 (248 reviews)</div>
+                    <div class="rating-text">
+                        <span itemprop="ratingValue">4.7</span>/5 (<span itemprop="reviewCount">248</span> reviews)
+                    </div>
                 </div>
                 
-                <p class="product-description">
+                <p class="product-description" itemprop="description">
                     Immerse yourself in the delicate fragrance of handpicked rose petals. Our Rose Petal Soap is crafted with organic roses and nourishing oils to gently cleanse while maintaining your skin's natural moisture balance.
                 </p>
                 
@@ -982,39 +1166,34 @@
                 <div class="weight-selection">
                     <h3>Select Size:</h3>
                     <div class="weight-options">
-                        <div class="weight-option active" data-weight="100" data-price="299">
-                            100g
+                        <div class="weight-option active" data-weight="75" data-price="199" data-mrp="249">
+                            75g
+                            <span class="weight-price">₹199</span>
+                        </div>
+                        <div class="weight-option" data-weight="120" data-price="299" data-mrp="399">
+                            120g
                             <span class="weight-price">₹299</span>
-                        </div>
-                        <div class="weight-option" data-weight="200" data-price="549">
-                            200g
-                            <span class="weight-price">₹549</span>
-                            <small style="display:block;color:#25D366;font-size:0.7rem;">Save ₹49</small>
-                        </div>
-                        <div class="weight-option" data-weight="350" data-price="849">
-                            350g
-                            <span class="weight-price">₹849</span>
-                            <small style="display:block;color:#25D366;font-size:0.7rem;">Save ₹98</small>
+                            <small style="display:block;color:#25D366;font-size:0.7rem;">Save ₹100</small>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Pricing Section -->
                 <div class="price-section">
-                    <div class="price-row">
-                        <div>
-                            <span class="original-price">₹349</span>
-                            <span class="current-price" id="currentPrice">₹299</span>
-                            <span class="discount-badge">14% OFF</span>
+                    <div class="price-container">
+                        <span class="original-price" id="originalPrice">₹249</span>
+                        <span class="current-price" id="currentPrice">₹199</span>
+                        <span class="discount-badge" id="discountBadge">20% OFF</span>
+                        <span class="price-savings" id="priceSavings">Save ₹50</span>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <div class="quantity-control">
+                            <button class="qty-btn" id="decreaseQty">-</button>
+                            <span class="qty-display" id="quantity">1</span>
+                            <button class="qty-btn" id="increaseQty">+</button>
                         </div>
-                        <div class="quantity-selector">
-                            <div class="quantity-control">
-                                <button class="qty-btn" id="decreaseQty">-</button>
-                                <span class="qty-display" id="quantity">1</span>
-                                <button class="qty-btn" id="increaseQty">+</button>
-                            </div>
-                            <div style="font-weight:600;color:var(--secondary);font-size:1rem;">₹<span id="totalPrice">299</span></div>
-                        </div>
+                        <div style="font-weight:600;color:var(--secondary);font-size:1rem;">Total: ₹<span id="totalPrice">199</span></div>
                     </div>
                     
                     <div class="action-buttons">
@@ -1046,7 +1225,7 @@
     </section>
 
     <!-- Ingredients Section -->
-    <section class="section">
+    <section class="section" itemscope itemtype="https://schema.org/ItemList">
         <div class="container">
             <h2 class="section-title">Sacred Ingredients</h2>
             <p style="text-align:center;max-width:600px;margin:0 auto 30px;font-size:0.9rem;color:#555;">
@@ -1135,12 +1314,12 @@
             
             <div class="similar-products-grid">
                 <!-- Product 1 -->
-                <div class="product-card">
+                <div class="product-card" itemscope itemtype="https://schema.org/Product">
                     <div class="product-card-image" style="background:#f0e6d6;">
                         <i class="fas fa-leaf" style="color:#8db596;"></i>
                     </div>
                     <div class="product-card-content">
-                        <h3>Neem & Tulsi</h3>
+                        <h3 itemprop="name">Neem & Tulsi</h3>
                         <div class="product-card-rating">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -1149,21 +1328,24 @@
                             <i class="fas fa-star-half-alt"></i>
                             4.8/5
                         </div>
-                        <p>Purifying blend for acne-prone skin with antibacterial properties.</p>
-                        <div class="product-card-price">₹279</div>
-                        <a href="product13.html" class="product-card-btn">
+                        <p itemprop="description">Purifying blend for acne-prone skin with antibacterial properties.</p>
+                        <div class="product-card-price-container">
+                            <div class="product-card-price">₹279</div>
+                            <div class="product-card-mrp">₹349</div>
+                        </div>
+                        <a href="product13.html" class="product-card-btn" itemprop="url">
                             <i class="fas fa-shopping-bag"></i> View Details
                         </a>
                     </div>
                 </div>
                 
                 <!-- Product 2 -->
-                <div class="product-card">
+                <div class="product-card" itemscope itemtype="https://schema.org/Product">
                     <div class="product-card-image" style="background:#f5e8e8;">
                         <i class="fas fa-seedling" style="color:#7d9d9c;"></i>
                     </div>
                     <div class="product-card-content">
-                        <h3>Sandalwood & Saffron</h3>
+                        <h3 itemprop="name">Sandalwood & Saffron</h3>
                         <div class="product-card-rating">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -1172,21 +1354,24 @@
                             <i class="fas fa-star"></i>
                             5.0/5
                         </div>
-                        <p>Luxurious anti-aging formula for radiant, youthful skin.</p>
-                        <div class="product-card-price">₹449</div>
-                        <a href="product2.html" class="product-card-btn">
+                        <p itemprop="description">Luxurious anti-aging formula for radiant, youthful skin.</p>
+                        <div class="product-card-price-container">
+                            <div class="product-card-price">₹449</div>
+                            <div class="product-card-mrp">₹599</div>
+                        </div>
+                        <a href="product2.html" class="product-card-btn" itemprop="url">
                             <i class="fas fa-shopping-bag"></i> View Details
                         </a>
                     </div>
                 </div>
                 
                 <!-- Product 3 -->
-                <div class="product-card">
+                <div class="product-card" itemscope itemtype="https://schema.org/Product">
                     <div class="product-card-image" style="background:#e6f0f8;">
                         <i class="fas fa-lemon" style="color:#f4a261;"></i>
                     </div>
                     <div class="product-card-content">
-                        <h3>Lemon & Honey</h3>
+                        <h3 itemprop="name">Lemon & Honey</h3>
                         <div class="product-card-rating">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -1195,9 +1380,12 @@
                             <i class="fas fa-star-half-alt"></i>
                             4.6/5
                         </div>
-                        <p>Brightening and exfoliating soap for glowing complexion.</p>
-                        <div class="product-card-price">₹329</div>
-                        <a href="product3.html" class="product-card-btn">
+                        <p itemprop="description">Brightening and exfoliating soap for glowing complexion.</p>
+                        <div class="product-card-price-container">
+                            <div class="product-card-price">₹329</div>
+                            <div class="product-card-mrp">₹419</div>
+                        </div>
+                        <a href="product3.html" class="product-card-btn" itemprop="url">
                             <i class="fas fa-shopping-bag"></i> View Details
                         </a>
                     </div>
@@ -1352,19 +1540,19 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer id="contact" itemscope itemtype="https://schema.org/LocalBusiness">
         <div class="container">
             <div class="footer-container">
                 <div class="footer-column">
                     <h3>AURA CLEANSE</h3>
-                    <p>From the House of BHAP Organics, we bring you divine handmade soaps crafted with pure, natural ingredients and ancient Ayurvedic wisdom for radiant, healthy skin.</p>
+                    <p itemprop="description">From the House of BHAP Organics, we bring you divine handmade soaps crafted with pure, natural ingredients and ancient Ayurvedic wisdom for radiant, healthy skin.</p>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <div class="contact-info">
                         <i class="fas fa-phone"></i>
-                        <a href="tel:+918532853241">+91 85328 53241</a>
+                        <a href="tel:+918532853241" itemprop="telephone">+91 85328 53241</a>
                     </div>
                     <div class="contact-info">
                         <i class="fab fa-whatsapp"></i>
@@ -1372,7 +1560,7 @@
                     </div>
                     <div class="contact-info">
                         <i class="fas fa-envelope"></i>
-                        <a href="mailto:info@aura-cleanse.com">info@aura-cleanse.com</a>
+                        <a href="mailto:info@aura-cleanse.com" itemprop="email">info@aura-cleanse.com</a>
                     </div>
                 </div>
                 
@@ -1464,9 +1652,134 @@
             sessionStorage.setItem('auraCleanseCartTimestamp', Date.now());
         }
         
+        // Premium Slideshow Variables
+        let currentSlide = 0;
+        let totalSlides = 3;
+        let slideshowInterval;
+        let isSlideshowPaused = false;
+        
+        // Initialize Premium Slideshow
+        function initSlideshow() {
+            const slides = document.querySelectorAll('.slideshow-slide');
+            const dots = document.querySelectorAll('.slideshow-dot');
+            totalSlides = slides.length;
+            
+            // Set initial active states
+            updateSlideshow();
+            
+            // Start automatic slideshow
+            startSlideshow();
+            
+            // Navigation arrows
+            document.getElementById('slideshowPrev').addEventListener('click', () => {
+                navigateSlideshow(-1);
+            });
+            
+            document.getElementById('slideshowNext').addEventListener('click', () => {
+                navigateSlideshow(1);
+            });
+            
+            // Dot navigation
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const index = parseInt(this.dataset.index);
+                    goToSlide(index);
+                });
+            });
+            
+            // Thumbnail navigation
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    const index = parseInt(this.dataset.imageIndex);
+                    goToSlide(index);
+                });
+            });
+            
+            // Pause slideshow on hover
+            const slideshowContainer = document.getElementById('slideshowContainer');
+            slideshowContainer.addEventListener('mouseenter', () => {
+                if (!isSlideshowPaused) {
+                    pauseSlideshow();
+                }
+            });
+            
+            slideshowContainer.addEventListener('mouseleave', () => {
+                if (!isSlideshowPaused) {
+                    startSlideshow();
+                }
+            });
+        }
+        
+        // Start slideshow
+        function startSlideshow() {
+            slideshowInterval = setInterval(() => {
+                navigateSlideshow(1);
+            }, 4000); // Change slide every 4 seconds
+        }
+        
+        // Pause slideshow
+        function pauseSlideshow() {
+            clearInterval(slideshowInterval);
+        }
+        
+        // Navigate slideshow
+        function navigateSlideshow(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            updateSlideshow();
+        }
+        
+        // Go to specific slide
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlideshow();
+            
+            // Pause slideshow temporarily when user manually selects a slide
+            pauseSlideshow();
+            isSlideshowPaused = true;
+            
+            // Restart after 10 seconds if not weight-selected
+            setTimeout(() => {
+                if (!isSlideshowPaused) {
+                    startSlideshow();
+                }
+            }, 10000);
+        }
+        
+        // Update slideshow display
+        function updateSlideshow() {
+            const slides = document.querySelectorAll('.slideshow-slide');
+            const dots = document.querySelectorAll('.slideshow-dot');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            
+            // Update slides
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                }
+            });
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active');
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                }
+            });
+            
+            // Update thumbnails
+            thumbnails.forEach((thumb, index) => {
+                thumb.classList.remove('active');
+                if (index === currentSlide) {
+                    thumb.classList.add('active');
+                }
+            });
+        }
+        
         // Product Configuration
-        let currentWeight = 100;
-        let currentPrice = 299;
+        let currentWeight = 75;
+        let currentPrice = 199;
+        let currentMrp = 249;
         let quantity = 1;
         
         // Weight Selection
@@ -1483,11 +1796,38 @@
                 // Update weight and price
                 currentWeight = parseInt(this.dataset.weight);
                 currentPrice = parseInt(this.dataset.price);
+                currentMrp = parseInt(this.dataset.mrp);
                 
                 // Update price display
                 updatePriceDisplay();
+                
+                // Update slideshow based on weight selection
+                updateSlideshowByWeight();
+                
+                // Pause slideshow when weight is selected
+                pauseSlideshow();
+                isSlideshowPaused = true;
             });
         });
+        
+        // Update slideshow based on selected weight
+        function updateSlideshowByWeight() {
+            const slides = document.querySelectorAll('.slideshow-slide');
+            let targetSlide = 0; // Default to first slide
+            
+            // Find the slide that matches the selected weight
+            slides.forEach((slide, index) => {
+                const slideWeight = slide.dataset.weight;
+                if (slideWeight === currentWeight.toString() || slideWeight === 'all') {
+                    if (slideWeight === currentWeight.toString()) {
+                        targetSlide = index;
+                    }
+                }
+            });
+            
+            // Go to the appropriate slide
+            goToSlide(targetSlide);
+        }
         
         // Quantity Controls
         document.getElementById('decreaseQty').addEventListener('click', () => {
@@ -1506,9 +1846,17 @@
         
         // Update Price Display
         function updatePriceDisplay() {
+            const total = currentPrice * quantity;
+            const totalMrp = currentMrp * quantity;
+            const discountPercent = Math.round(((currentMrp - currentPrice) / currentMrp) * 100);
+            const savings = currentMrp - currentPrice;
+            
             document.getElementById('quantity').textContent = quantity;
             document.getElementById('currentPrice').textContent = `₹${currentPrice}`;
-            document.getElementById('totalPrice').textContent = currentPrice * quantity;
+            document.getElementById('originalPrice').textContent = `₹${currentMrp}`;
+            document.getElementById('totalPrice').textContent = total;
+            document.getElementById('discountBadge').textContent = `${discountPercent}% OFF`;
+            document.getElementById('priceSavings').textContent = `Save ₹${savings}`;
         }
         
         // Add to Cart Functionality - Shared with main page
@@ -1518,10 +1866,12 @@
                 name: "Rose Petal Soap",
                 subtitle: "Simply Rosy",
                 price: currentPrice,
+                mrp: currentMrp,
                 weight: currentWeight + "g",
                 quantity: quantity,
                 icon: "fas fa-rose",
-                size: currentWeight + "g"
+                size: currentWeight + "g",
+                image: "https://images.unsplash.com/photo-1608248242905-5f2274e7d4d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
             };
             
             const existingItem = cart.find(item => item.id === product.id && item.weight === product.weight);
@@ -1546,7 +1896,19 @@
         
         // Buy Now Functionality
         document.getElementById('buyNow').addEventListener('click', () => {
-            const message = `Hello, I would like to buy ${quantity} × Rose Petal Soap (${currentWeight}g) for ₹${currentPrice * quantity}.`;
+            const totalPrice = currentPrice * quantity;
+            const totalMrp = currentMrp * quantity;
+            const savings = totalMrp - totalPrice;
+            const discountPercent = Math.round((savings / totalMrp) * 100);
+            
+            const message = `Hello, I would like to buy ${quantity} × Rose Petal Soap (${currentWeight}g) for ₹${totalPrice}. 
+            
+Original Price: ₹${totalMrp}
+Discount: ${discountPercent}% OFF
+You Save: ₹${savings}
+
+Please confirm my order and provide delivery details.`;
+            
             const whatsappUrl = `https://wa.me/918532853241?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         });
@@ -1611,22 +1973,8 @@
                 });
                 this.classList.add('active');
                 
-                const imageType = this.dataset.image;
-                const mainImage = document.getElementById('mainImage');
-                const icon = mainImage.querySelector('i');
-                
-                // Change icon based on selected thumbnail
-                switch(imageType) {
-                    case 'rose':
-                        icon.className = 'fas fa-rose';
-                        break;
-                    case 'petals':
-                        icon.className = 'fas fa-leaf';
-                        break;
-                    case 'package':
-                        icon.className = 'fas fa-gift';
-                        break;
-                }
+                const imageIndex = this.dataset.imageIndex;
+                goToSlide(parseInt(imageIndex));
             });
         });
         
@@ -1670,7 +2018,43 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             initCart(); // Initialize cart system - Load from shared session storage
+            initSlideshow(); // Initialize premium slideshow
             updatePriceDisplay();
+            
+            // Add structured data for SEO
+            const structuredData = {
+                "@context": "https://schema.org",
+                "@type": "Product",
+                "name": "Rose Petal Soap",
+                "image": [
+                    "https://images.unsplash.com/photo-1608248242905-5f2274e7d4d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1563241527-3004b7be8b7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Natural Ayurvedic Rose Petal handmade soap crafted with organic roses and nourishing oils for gentle skin cleansing and moisture balance.",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Aura-Cleanse"
+                },
+                "offers": {
+                    "@type": "AggregateOffer",
+                    "priceCurrency": "INR",
+                    "lowPrice": "199",
+                    "highPrice": "299",
+                    "offerCount": "2",
+                    "availability": "https://schema.org/InStock"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.7",
+                    "reviewCount": "248"
+                }
+            };
+            
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.textContent = JSON.stringify(structuredData);
+            document.head.appendChild(script);
             
             // Ensure no horizontal scroll
             document.documentElement.style.overflowX = 'hidden';
