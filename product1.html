@@ -196,22 +196,93 @@
             position: relative;
         }
 
-        .main-product-image {
+        /* Premium Slideshow Styles */
+        .slideshow-container {
+            position: relative;
             width: 100%;
             height: 320px;
             background: white;
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
-            position: relative;
             margin-bottom: 1rem;
         }
 
-        .main-product-image img {
+        .slideshow-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slideshow-slide.active {
+            opacity: 1;
+        }
+
+        .slideshow-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.8s ease-in-out;
+        }
+
+        .slideshow-nav {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .slideshow-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slideshow-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .slideshow-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10;
+            color: var(--secondary);
+            font-size: 1rem;
+            border: none;
+        }
+
+        .slideshow-arrow:hover {
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .slideshow-arrow.prev {
+            left: 15px;
+        }
+
+        .slideshow-arrow.next {
+            right: 15px;
         }
 
         /* Product Badge */
@@ -526,54 +597,146 @@
             color: var(--secondary);
         }
 
-        /* Timeline */
-        .timeline {
+        /* PREMIUM AYURVEDIC TIMELINE */
+        .premium-timeline-section {
+            background: linear-gradient(135deg, #f8f5f1 0%, #f0e9df 100%);
+            padding: 70px 0;
             position: relative;
-            max-width: 1000px;
-            margin: 40px auto 0;
+            overflow: hidden;
         }
 
-        .timeline::after {
+        .premium-timeline-section::before {
             content: '';
             position: absolute;
-            width: 4px;
-            background: var(--primary);
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .premium-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 50px auto 0;
+            padding: 0 20px;
+        }
+
+        .premium-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
             top: 0;
             bottom: 0;
-            left: 50%;
-            margin-left: -2px;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent), var(--primary));
+            transform: translateX(-50%);
         }
 
-        .timeline-item {
-            padding: 12px 30px;
+        .timeline-item-premium {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
             position: relative;
-            width: 50%;
-            box-sizing: border-box;
         }
 
-        .timeline-content {
-            padding: 20px;
+        .timeline-item-premium:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item-premium:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content-premium {
+            width: 45%;
+            padding: 30px;
             background: white;
             border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            transition: var(--transition);
+            border: 1px solid rgba(232, 217, 197, 0.3);
+        }
+
+        .timeline-content-premium:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), #d45c6b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(183, 110, 121, 0.3);
+            border: 3px solid white;
+        }
+
+        .timeline-period-premium {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), #d45c6b);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-content-premium h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .timeline-content-premium h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .timeline-content-premium p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .timeline-benefits {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+
+        .timeline-benefits li {
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 0.85rem;
             position: relative;
         }
 
-        .timeline-period {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 0.8rem;
-        }
-
-        .timeline-content h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: var(--secondary);
+        .timeline-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: -20px;
+            color: var(--accent);
+            font-weight: bold;
         }
 
         /* Similar Products Section */
@@ -1034,7 +1197,7 @@
                 gap: 30px;
             }
             
-            .main-product-image {
+            .slideshow-container {
                 height: 280px;
             }
             
@@ -1042,18 +1205,24 @@
                 font-size: 1.6rem;
             }
             
-            .timeline::after {
-                left: 31px;
+            .premium-timeline::before {
+                left: 30px;
             }
             
-            .timeline-item {
+            .timeline-item-premium {
+                flex-direction: row !important;
+                justify-content: flex-start;
+                padding-left: 70px;
+            }
+            
+            .timeline-content-premium {
                 width: 100%;
-                padding-left: 60px;
-                padding-right: 20px;
+                margin-left: 0;
             }
             
-            .timeline-item:nth-child(even) {
-                left: 0;
+            .timeline-icon {
+                left: 30px;
+                transform: translateX(0);
             }
             
             .nav-links {
@@ -1171,7 +1340,7 @@
                 font-size: 1.6rem;
             }
             
-            .main-product-image {
+            .slideshow-container {
                 height: 220px;
             }
             
@@ -1195,6 +1364,20 @@
                 height: 40px;
             }
             
+            .slideshow-arrow {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+            
+            .slideshow-arrow.prev {
+                left: 8px;
+            }
+            
+            .slideshow-arrow.next {
+                right: 8px;
+            }
+            
             .logo {
                 font-size: 1.5rem;
             }
@@ -1202,6 +1385,16 @@
             .cart-item-image {
                 width: 55px;
                 height: 55px;
+            }
+            
+            .timeline-content-premium {
+                padding: 20px;
+            }
+            
+            .timeline-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
             }
         }
 
@@ -1248,24 +1441,62 @@
         <div class="container product-hero-container">
             <div class="product-gallery">
                 <div class="product-badge">Ayurvedic Certified</div>
-                <div class="main-product-image">
-                    <img src="soap.jpg" 
-                         alt="Aura-Cleanse Rose Petal Soap 100g - Natural Ayurvedic handmade soap with rose petals" 
-                         itemprop="image"
-                         loading="lazy">
+                
+                <!-- Premium Slideshow -->
+                <div class="slideshow-container" id="slideshowContainer">
+                    <!-- Slide 1 -->
+                    <div class="slideshow-slide active" data-index="0">
+                        <img src="soap.jpg" 
+                             alt="Aura-Cleanse Rose Petal Soap 100g - Natural Ayurvedic handmade soap with rose petals" 
+                             itemprop="image"
+                             loading="lazy">
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="slideshow-slide" data-index="1">
+                        <img src="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Rose Petal Soap ingredients and packaging - Premium Ayurvedic skincare" 
+                             itemprop="image"
+                             loading="lazy">
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="slideshow-slide" data-index="2">
+                        <img src="https://images.unsplash.com/photo-1563241527-3004b7be8b7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Rose Petal Soap natural ingredients close-up - Pure botanical skincare" 
+                             itemprop="image"
+                             loading="lazy">
+                    </div>
+                    
+                    <!-- Navigation arrows -->
+                    <button class="slideshow-arrow prev" id="slideshowPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slideshow-arrow next" id="slideshowNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    
+                    <!-- Dots navigation -->
+                    <div class="slideshow-nav" id="slideshowDots">
+                        <div class="slideshow-dot active" data-index="0"></div>
+                        <div class="slideshow-dot" data-index="1"></div>
+                        <div class="slideshow-dot" data-index="2"></div>
+                    </div>
                 </div>
+                
+                <!-- Thumbnails -->
                 <div class="product-thumbnails">
-                    <div class="thumbnail active">
-                        <img src="https://images.unsplash.com/photo-1608248242905-5f2274e7d4d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                    <div class="thumbnail active" data-image-index="0">
+                        <img src="soap.jpg" 
                              alt="Rose Petal Soap thumbnail" 
                              loading="lazy">
                     </div>
-                    <div class="thumbnail">
+                    <div class="thumbnail" data-image-index="1">
                         <img src="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
                              alt="Rose Petal Soap ingredients thumbnail" 
                              loading="lazy">
                     </div>
-                    <div class="thumbnail">
+                    <div class="thumbnail" data-image-index="2">
                         <img src="https://images.unsplash.com/photo-1563241527-3004b7be8b7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
                              alt="Rose Petal Soap packaging thumbnail" 
                              loading="lazy">
@@ -1517,44 +1748,82 @@
         </div>
     </section>
 
-    <!-- Ayurvedic Benefits Timeline -->
-    <section class="section" style="background:#f9f9f9;">
+    <!-- PREMIUM Ayurvedic Benefits Timeline -->
+    <section class="section premium-timeline-section">
         <div class="container">
-            <h2 class="section-title">Ayurvedic Benefits Timeline</h2>
+            <h2 class="section-title">Ayurvedic Transformation Journey</h2>
             <p style="text-align:center;max-width:600px;margin:0 auto 30px;font-size:0.9rem;color:#555;">
-                Experience the transformative journey of your skin with regular use
+                Experience the transformative power of Ayurveda with regular use of Rose Petal Soap
             </p>
             
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-period">Week 1-2</span>
+            <div class="premium-timeline">
+                <!-- Week 1-2 -->
+                <div class="timeline-item-premium">
+                    <div class="timeline-content-premium">
+                        <span class="timeline-period-premium">Week 1-2</span>
                         <h3>Initial Purification</h3>
-                        <p>Skin begins to detoxify. You'll notice reduced oiliness, cleaner pores, and a subtle natural glow as impurities are gently removed.</p>
+                        <p>Your skin begins its detoxification journey. Natural impurities are gently drawn out, revealing cleaner pores and a subtle natural glow.</p>
+                        <ul class="timeline-benefits">
+                            <li>Reduced excess oiliness</li>
+                            <li>Cleaner, unclogged pores</li>
+                            <li>Subtle natural glow emerges</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fas fa-spa"></i>
                     </div>
                 </div>
                 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-period">Week 3-4</span>
+                <!-- Week 3-4 -->
+                <div class="timeline-item-premium">
+                    <div class="timeline-content-premium">
+                        <span class="timeline-period-premium">Week 3-4</span>
                         <h3>Deep Nourishment</h3>
-                        <p>Active ingredients penetrate deeper. Skin feels noticeably softer, more hydrated, and minor imperfections begin to fade.</p>
+                        <p>Active Ayurvedic ingredients penetrate deeper layers. Your skin receives intensive hydration and nourishment from pure botanical extracts.</p>
+                        <ul class="timeline-benefits">
+                            <li>Noticeably softer texture</li>
+                            <li>Intensive hydration</li>
+                            <li>Minor imperfections begin to fade</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fas fa-leaf"></i>
                     </div>
                 </div>
                 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-period">Month 2</span>
+                <!-- Month 2 -->
+                <div class="timeline-item-premium">
+                    <div class="timeline-content-premium">
+                        <span class="timeline-period-premium">Month 2</span>
                         <h3>Visible Transformation</h3>
-                        <p>Skin texture improves dramatically. Natural radiance returns, fine lines appear reduced, and complexion becomes even-toned.</p>
+                        <p>Skin's natural balance is restored. Experience dramatically improved texture, natural radiance, and a more even-toned complexion.</p>
+                        <ul class="timeline-benefits">
+                            <li>Dramatically improved texture</li>
+                            <li>Natural radiance returns</li>
+                            <li>Even-toned complexion</li>
+                            <li>Fine lines appear reduced</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fas fa-star"></i>
                     </div>
                 </div>
                 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-period">Ongoing Use</span>
+                <!-- Ongoing Use -->
+                <div class="timeline-item-premium">
+                    <div class="timeline-content-premium">
+                        <span class="timeline-period-premium">Ongoing Use</span>
                         <h3>Sustained Wellness</h3>
-                        <p>Skin maintains optimal health. Protective barrier strengthens, reducing sensitivity and maintaining youthful vitality.</p>
+                        <p>Your skin maintains optimal Ayurvedic balance. The protective barrier strengthens, ensuring long-term health and youthful vitality.</p>
+                        <ul class="timeline-benefits">
+                            <li>Optimal skin balance maintained</li>
+                            <li>Strengthened protective barrier</li>
+                            <li>Reduced sensitivity</li>
+                            <li>Long-term youthful vitality</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fas fa-heart"></i>
                     </div>
                 </div>
             </div>
@@ -1805,6 +2074,109 @@
         const productWeight = "100g";
         const productSize = "100g";
         let quantity = 1;
+        
+        // Premium Slideshow Variables
+        let currentSlide = 0;
+        let totalSlides = 3;
+        let slideshowInterval;
+        
+        // Initialize Premium Slideshow
+        function initSlideshow() {
+            const slides = document.querySelectorAll('.slideshow-slide');
+            const dots = document.querySelectorAll('.slideshow-dot');
+            totalSlides = slides.length;
+            
+            // Set initial active states
+            updateSlideshow();
+            
+            // Start automatic slideshow
+            startSlideshow();
+            
+            // Navigation arrows
+            document.getElementById('slideshowPrev').addEventListener('click', () => {
+                navigateSlideshow(-1);
+            });
+            
+            document.getElementById('slideshowNext').addEventListener('click', () => {
+                navigateSlideshow(1);
+            });
+            
+            // Dot navigation
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const index = parseInt(this.dataset.index);
+                    goToSlide(index);
+                });
+            });
+            
+            // Thumbnail navigation
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    const index = parseInt(this.dataset.imageIndex);
+                    goToSlide(index);
+                });
+            });
+            
+            // Pause slideshow on hover
+            const slideshowContainer = document.getElementById('slideshowContainer');
+            slideshowContainer.addEventListener('mouseenter', () => {
+                clearInterval(slideshowInterval);
+            });
+            
+            slideshowContainer.addEventListener('mouseleave', () => {
+                startSlideshow();
+            });
+        }
+        
+        // Start slideshow
+        function startSlideshow() {
+            slideshowInterval = setInterval(() => {
+                navigateSlideshow(1);
+            }, 4000); // Change slide every 4 seconds
+        }
+        
+        // Navigate slideshow
+        function navigateSlideshow(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            updateSlideshow();
+        }
+        
+        // Go to specific slide
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlideshow();
+        }
+        
+        // Update slideshow display
+        function updateSlideshow() {
+            const slides = document.querySelectorAll('.slideshow-slide');
+            const dots = document.querySelectorAll('.slideshow-dot');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            
+            // Update slides
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                }
+            });
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active');
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                }
+            });
+            
+            // Update thumbnails
+            thumbnails.forEach((thumb, index) => {
+                thumb.classList.remove('active');
+                if (index === currentSlide) {
+                    thumb.classList.add('active');
+                }
+            });
+        }
         
         // Initialize cart from shared session storage
         function loadCartFromStorage() {
@@ -2177,24 +2549,10 @@ Please confirm my order and provide delivery details.`;
             });
         });
         
-        // Product Image Thumbnails
-        document.querySelectorAll('.thumbnail').forEach(thumb => {
-            thumb.addEventListener('click', function() {
-                document.querySelectorAll('.thumbnail').forEach(t => {
-                    t.classList.remove('active');
-                });
-                this.classList.add('active');
-                
-                // Update main image
-                const mainImage = document.querySelector('.main-product-image img');
-                const thumbSrc = this.querySelector('img').src;
-                mainImage.src = thumbSrc;
-            });
-        });
-        
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
-            loadCartFromStorage(); // Initialize cart system - Load from shared session storage
+            loadCartFromStorage(); // Initialize cart system
+            initSlideshow(); // Initialize premium slideshow
             updatePriceDisplay();
             
             // Listen for cart updates from index.html
@@ -2211,7 +2569,7 @@ Please confirm my order and provide delivery details.`;
                 "@type": "Product",
                 "name": "Rose Petal Soap",
                 "image": [
-                    "https://images.unsplash.com/photo-1608248242905-5f2274e7d4d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "soap.jpg",
                     "https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                     "https://images.unsplash.com/photo-1563241527-3004b7be8b7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                 ],
@@ -2245,4 +2603,4 @@ Please confirm my order and provide delivery details.`;
         });
     </script>
 </body>
-</html> 
+</html>
